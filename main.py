@@ -4,24 +4,32 @@ import flet as ft
 
 async def main(page: ft.Page):
     page.title = "Rasoi"
-    buttons = get_buttons()
-    
-    page.add(
-        ft.Row(
-            [
-                button for button in buttons
-            ]
-        )
+    page.navigation_bar = ft.NavigationBar(
+        destinations=[
+            ft.NavigationBarDestination(
+                icon=ft.icons.EDIT_DOCUMENT,
+                label="Facturas",
+            ),
+            ft.NavigationBarDestination(
+                icon=ft.icons.PAYMENTS,
+                label="Caja",
+            ),
+            ft.NavigationBarDestination(
+                icon=ft.icons.PERSON,
+                label="Clientes",
+            ),
+            ft.NavigationBarDestination(
+                icon=ft.icons.RESTAURANT_MENU,
+                label="Restaurant Menu",
+            ),
+            ft.NavigationBarDestination(
+                icon=ft.icons.CHECKROOM,
+                label="Otros 2",
+                bgcolor=ft.colors.WHITE
+            ),
+        ],
+        indicator_shape=ft.RoundedRectangleBorder(radius=8),
+        
     )
-
-def get_buttons():
-    buttons = [
-        ft.ElevatedButton("Facturas", on_click=lambda _: print("Clicked!")),
-        ft.ElevatedButton("Caja", on_click=lambda _: print("Clicked!")),
-        ft.ElevatedButton("Clientes", on_click=lambda _: print("Clicked!")),
-        ft.ElevatedButton("Otros 1", on_click=lambda _: print("Clicked!")),
-        ft.ElevatedButton("Otros 2", on_click=lambda _: print("Clicked!")),
-    ]
-    return buttons
-
+    page.add(ft.Text("Me voy a cagar =)!", size=50) )
 ft.app(target=main, assets_dir="assets")
