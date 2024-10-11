@@ -3,7 +3,9 @@ import flet as ft
 
 
 async def main(page: ft.Page):
+    page.theme_mode = ft.ThemeMode.LIGHT
     page.title = "Rasoi"
+    
     page.navigation_bar = ft.NavigationBar(
         destinations=[
             ft.NavigationBarDestination(
@@ -29,7 +31,10 @@ async def main(page: ft.Page):
             ),
         ],
         indicator_shape=ft.RoundedRectangleBorder(radius=8),
-        
     )
     page.add(ft.Text("Me voy a cagar =)!", size=50) )
+    
+    def open_facturas(e):
+        page.route = "/facturas"
+    
 ft.app(target=main, assets_dir="assets")
